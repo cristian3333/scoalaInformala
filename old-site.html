@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td style="width:20%">
+                <form action="1">
+                    <input name="subject" type="hidden" value="Class" />
+                    <fieldset>
+                        <legend>Academic information</legend>
+                        <div>
+                            <label for="degree">Degree</label>
+                            <select name="degree" id="degree">
+                                <option value="BA">Bachelor of Art</option>
+                                <option value="BS">Bachelor of Science</option>
+                                <option value="MBA" selected="selected"> Master of Business Admininstration</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="studentID">Student ID</label>
+                            <input name="studentID" type="password" minlength="4" maxlength="20" required />
+                        </div>
+                        <br>
+                        <div>
+                            <label for="classes">Classes attended</label>
+                            <select multiple name="mats" id="mats">
+                                <option value="GE">Geography</option>
+                                <option value="MA">Mathematics</option>
+                                <option value="ENGa"> Spanish</option>
+                                <option value="ENGs"> French</option>
+                                <option value="ENGd"> English</option>
+                                <option value="ENGf"> Burundish</option>
+                                <option value="ENGg"> Italian</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Personal Details</legend>
+                        <div>
+                            <label for="firstName">First Name</label>
+                            <input name="firstName" type="text" />
+                        </div>
+                        <br>
+                        <div>
+                            <label for="lastName">Last Name</label>
+                            <input name="lastName" type="text" />
+                        </div>
+                        <br>
+                        <div>
+                            <label for="gender">Gender</label>
+                            <input type="radio" name="gender" value="male"> Male
+                            <input type="radio" name="gender" value="female" checked="checked"> Female<br>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="eMail">Email</label>
+                            <input id="emailAddress" type="text" required/>
+                        </div>
+                        <br>
+                    </fieldset>
+
+                    <fieldset>
+                        <textarea rows="5" cols="50">TERMS AND CONDITIONS...</textarea>
+                        <div>
+                            <input type="submit" value="Send Form">
+                            <input type="button" onClick="check()" value="Clear Form">
+                        </div>
+                    </fieldset>
+                </form>
+            </td>
+            <td width=80% font-size>
+                <img src="https://image.shutterstock.com/z/stock-photo--discount-made-of-red-balloons-sale-concept-d-rendering-isolated-on-white-background-529772884.jpg" style="height:200px">WEB DESIGN</h1><br><br><br><br>
+                <h2>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sint officiis suscipit eveniet
+                        ea incidunt maiores, nam, ipsam tenetur deleniti reprehenderit atque iusto veritatis voluptatem.
+                        Totam nihil, deleniti consectetur quos.
+                    </div>
+                    <br>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sint officiis suscipit eveniet
+                        ea incidunt maiores, nam, ipsam tenetur deleniti reprehenderit atque iusto veritatis voluptatem.
+                        Totam nihil, deleniti consectetur quos.
+                    </div>
+                    <br>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sint officiis suscipit eveniet
+                        ea incidunt maiores, nam, ipsam tenetur deleniti reprehenderit atque iusto veritatis voluptatem.
+                        Totam nihil, deleniti consectetur quos.
+                    </div>
+                    <br>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sint officiis suscipit eveniet
+                        ea incidunt maiores, nam, ipsam tenetur deleniti reprehenderit atque iusto veritatis voluptatem.
+                        Totam nihil, deleniti consectetur quos.
+                    </div>
+                    <br>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sint officiis suscipit eveniet
+                        ea incidunt maiores, nam, ipsam tenetur deleniti reprehenderit atque iusto veritatis voluptatem.
+                        Totam nihil, deleniti consectetur quos.
+                    </div>
+                </h2>
+            </td>
+        </tr>
+
+    </table>
+</body>
+
+</html>
