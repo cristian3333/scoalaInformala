@@ -1,0 +1,119 @@
+#padding20{
+    padding: 20px;
+    background-color:#E0D48A;
+}
+
+.alignright{
+    text-align: right;
+    font-size: 60px;
+}
+
+.width100f{
+    background-color: #BCDA2D;
+    border-radius: 10px 10px 10px 10px!important;
+    padding: 30px;
+    text-align: center;
+}
+#backg{
+    background-color: #F0EACA;
+    padding: 15px;
+}
+.headerpage{
+    padding: 90px 250px 150px 750px;
+}
+.paddingleft110{
+    padding-left: 110px;
+}
+.btnclass{
+    font-size: 20px; 
+    width: 230px; 
+    height: 60px;
+    float: left;
+}
+.inlineblock{
+    display: inline-block;
+    background: #EAE5C9;
+    border: 1px dotted #D0D0D0;
+}
+.btnlink{
+    text-align: center;
+    text-decoration: none;
+    display: grid;
+}
+.leftbar{
+    float: left;
+    width: 20%;
+    padding: 10px;
+}
+.leftcontent{
+    float: left;
+    width: 40%;
+}
+.buttons{
+    font-size: 15px;
+     width: 150px;
+      height: 40px;
+       border-radius: 5px;
+        background:#CBDD53;
+}
+.tileside{
+    background:#D0D362;
+    padding: 10px;
+}
+.hyperlink{
+    text-decoration: none;
+}
+/* ///////////////// vechi jos/////////// */
+.border1 {
+    border: 1px solid;
+}
+
+.content20{
+    width: 20%;
+}
+
+.content80{
+    width: 80%;
+}
+
+.title{
+    font-size:80px;
+    padding: 50px;
+    font-style: italic;
+    color: white;
+}
+
+.padleft10{
+    padding-left: 10px;
+}
+a:visited{
+    color:black;
+  }
+.width100{
+    width: 100%;
+    background-color: #BDD92D;
+}
+#globe{
+    height: 135px;
+    
+}
+#menu{
+    vertical-align: top;
+}
+
+#footerp{
+    text-align:center;
+    padding: 15px;
+}
+
+.margin0{
+    margin: 0;
+}
+.paddingt30{
+    padding-top: 50px;
+}
+
+.aligncenter{
+    text-align: center;
+}
+
