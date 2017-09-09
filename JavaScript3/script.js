@@ -94,7 +94,7 @@ function lcm(a,b){
 // -------- NR 4 - START - ALL DIVISORS IN ARRAY----------
 
 function divisors(a){
-    arr=[];
+    var arr=[];
     for (i=2; i<a; i++){
         if(a % i == 0){
             arr.push(i);
@@ -105,6 +105,19 @@ function divisors(a){
 console.log(divisors(64));
 // -------- NR 4 - STOP - ALL DIVISORS IN ARRAY----------
 
+function divisorsP(a){
+    var arr=[];
+    for (i=2; i<=a;){
+        if(a % i == 0){
+            arr.push(i);
+            a = a/i;
+        }else{
+            i++;
+        }
+    }
+    return arr;
+}
+console.log(divisorsP(64));
     //-----NR 5 START - ALL PRIME DIVISORS------------
 // function allPrime(integer){
 //     var primeArray = [];
@@ -141,26 +154,7 @@ console.log(divisors(64));
 // }
 
 // console.log(allPrime(64));
-function divisorsP(a){
-    var arr=[];
-    for (i=2; i<=a;){
-        if(a % i == 0){
-            arr.push(i);
-            a = a/i;
-        }else{
-            i++;
-        }
-    }
-    return arr;
-}
-console.log(divisorsP(64));
 
-
-
-
-//-----N3 5 STOP - ALL PRIME DIVISORS------------
-
-// -------- NR 6 - START - ALL UNIQUE PRIME DIVISORS IN ARRAY----------
 function allPrime(n){
     var i=2;
     while(i <= n){
@@ -178,6 +172,12 @@ function allPrime(n){
 }
 var a= 64;
 console.log(allPrime(a));
+
+
+//-----N3 5 STOP - ALL PRIME DIVISORS------------
+
+// -------- NR 6 - START - ALL UNIQUE PRIME DIVISORS IN ARRAY----------
+
 // -------- NR 6 - STOP - ALL UNIQUE PRIME DIVISORS IN ARRAY----------
 
 //-------------NR 7 -----------------------
