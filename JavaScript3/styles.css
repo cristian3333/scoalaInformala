@@ -1,0 +1,86 @@
+#presentationForm{
+    width: 25%;
+    padding: 10px;
+    border: 1px dotted;
+    margin: 10px 570px;
+    text-align: center;
+    background-color:white !important;
+}
+
+#firstForm{
+    padding: 10px;
+    border: 1px dotted;
+    margin: 10px;
+    text-align: center;
+    background-color:white !important;
+    width: 25%;
+}
+
+#firstFormInput{
+    margin-right:-20px;
+}
+
+.red{
+    color:red;
+}
+
+#secondForm{
+    padding: 10px;
+    border: 1px dotted;
+    text-align: center;
+    background-color:white !important;
+    width: 55%;
+    margin: 10px 675px;
+}
+
+#thirdForm{
+    padding: 10px;
+    border: 1px dotted;
+    margin: 10px;
+    text-align: center;
+    background-color:white !important;
+    width: 55%;
+}
+
+#fourthForm{
+    padding: 10px;
+    border: 1px dotted;
+    margin: 10px;
+    background-color:white !important;
+    width: 100%;
+}
+
+#fourthForm span{
+    float:right;
+    background-color:black;
+    color:white;
+    padding:10px;
+}
+
+#alertLimit{
+    display: inline;
+}
+
+#fifthForm{
+    width: 25%;
+    padding: 10px;
+    border: 1px dotted;
+    margin: 10px 570px;
+    text-align: center;
+    background-color:white !important;
+}
+
+#myTable{
+    margin: auto;
+}
+
+#myTable td{
+    border: 1px dotted;
+    width:500px !important;
+    height: 350px;
+}
+
+#myTable img{
+    width:500px;
+    height: 350px;
+}
