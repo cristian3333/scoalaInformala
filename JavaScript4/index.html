@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>HTML JavaScript</title>
+</head>
+<body style="background-color:red">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align:center; margin-top: 30px">
+                <button class="btn btn-default" ><a href="../index.html" style="text-decoration: none; color:red; display: block">Back to Main</a></button>
+             </div>
+        </div>
+    </div>
+<!-- --------------------------------------------------JS3 - curs---------------------------------------------------------- -->
+<!-- 
+    <p id="moloz" onmouseover="changeColor()" onmouseout="changeColor2()">
+        Primul moloz
+    </p>
+    <p id="altParagraf">
+            ce e aicisa 
+    </p>
+    <p class="fancy">
+            tot moloz
+    </p>
+    <p class="fancy" >
+            tot moloz
+    </p>
+
+    <form id="myForm" onkeydown="keyDown()">
+        <input 
+        name="firstName" 
+        type="text" 
+        value="" 
+        placeholder="first Name" 
+        onkeyup="keyUp()" 
+        onkeypress="keyPress()"
+        onchange="change()"
+        oninput="input(event, this)"
+        ><br>
+        <input name="lastName" type="text" placeholder="last Name" oninput="input(event, this)"><br>
+        <p id="hello">
+            Primul moloz
+        </p>
+        <select name="age">
+            <option value="0-7">0-7</option>
+            <option value="8-14">8-14</option>
+            <option value="15-18">15-18</option>
+            <option value="19-21">19-21</option>
+            <option value="22-40">22-40</option>
+        </select><br>
+        <input type="text" name="firstNumber" onchange="add(event, this)"> + <input type="text"  name="secondNumber" oninput="add(event, this)"> = <input type="text" name="secondNumber" id="sum"><br>
+        Check me out: <input type="checkbox" name="checkbox" value="test"/><br>
+        Favorite band: <br>
+        Metalica: <input type="radio" value="metalica" name="favoriteBrand"/><br>
+        Salam: <input type="radio" value="salam" name="favoriteBrand"/><br>
+        xxxxx: <input type="radio" value="xxxxx" name="favoriteBrand2"/><br>
+        yyyyy: <input type="radio" value="yyyyy" name="favoriteBrand2"/><br>
+        
+    </form> -->
+<!-- --------------------------------------------------STOP -JS3 - curs---------------------------------------------------------- -->
+    
+
+
+
+
+
+    <div>
+        <form action="" id="presentationForm" name="">
+            <div>
+                <fieldset style="text-align:center"><legend>Personal Information: </legend></fieldset><br>
+                <label for="firstName">First Name: </label>
+                <input type="text" name="firstName" placeholder="Cristian" id=""><br><br>
+                <label for="lastName">Last Name: </label>
+                <input type="text" name="lastName"  placeholder="D" id=""><br><br>
+                <label for="city">City:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </label>
+                <input type="text" name="city" placeholder="Bucharest" id="">
+            </div>
+            <hr>
+            <div>
+                <label for="age">Age: </label><br>
+                <select name="age">
+                    <option value="0-7">0-7</option>
+                    <option value="8-14">8-17</option>
+                    <option value="15-18" selected="selected">18-25</option>
+                    <option value="19-21">26-35</option>
+                    <option value="22-40">36-50</option>
+                </select>
+            </div><br><hr><br>
+            <div>
+                <label for="degree">Studies: </label><br>
+                <select name="degree" id="degree">
+                    <option value="BA">Bachelor of Art</option>
+                    <option value="BS">Bachelor of Science</option>
+                    <option value="MBA" selected="selected"> Master of Business Admininstration</option>
+                </select>
+            </div><br>
+            <hr>
+            <div>
+                <label for="checkbox">Choose checkboxes: </label><br>
+            <input type="checkbox" name="checkbox" value="test"/>First Check
+            <input type="checkbox" name="checkbox" value="test"/>Second Check
+            <input type="checkbox" name="checkbox" value="test"/>Third Check<br>
+            </div>
+            <!-- <hr><hr>
+            <div>
+                <label for="gender">Gender: </label>
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female" checked="checked"> Female<br>
+            </div> -->
+            <hr>
+            <div>
+                <label for="chromosome">Chromosome: </label><br>
+            <input type="radio" value="xx" name="chromosome"/>xx<br>
+            <input type="radio" value="yy" name="chromosome"/>yy<br>
+            <input type="radio" value="xy" name="chromosome"/>xy
+            </div><hr>
+            <input type="submit">
+        </form><hr>
+    </div>
+
+    <div>
+        <form action="" id="firstForm" name="">
+            <div>
+                <fieldset ><legend>Exercises 1 & 2</legend>The bigger one is green, the smaller one is red, if they are equal both are green.</fieldset><hr>
+                <label for="firstValue">First Value: </label>
+                <input type="text" name="firstValue" id="firstFormInput" oninput="check(event,this)" class="red" value=""><br><br>
+                <label for="secondValue">Second Value: </label>
+                <input type="text" name="secondValue" id="" oninput="check(event,this)" class="red" value=""><br><br>
+            </div>
+        </form>
+    </div>
+    <div>
+            <form action="" id="thirdForm" name="">
+                <div>
+                    <fieldset ><legend>Exercise 3</legend></fieldset><br>
+                    <label for="firstValue">First Value: </label>
+                    <input type="text" name="firstValue"  oninput="check3(event,this)" class="red" value="">&nbsp; &nbsp;
+                    <label for="secondValue">Second Value: </label>
+                    <input type="text" name="secondValue" id="" oninput="check3(event,this)" class="red" value="">&nbsp;&nbsp;<br><hr>
+                    <label for="bigger">The bigger value: </label>
+                    <input type="text" name="bigger" id="bigger" class="red"><br>
+                </div>
+            </form>
+    </div>
+    <div>
+        <form action="" id="secondForm" name="">
+            <div>
+                <fieldset ><legend>Exercise 4</legend></fieldset><br>
+                <label for="firstValue">First Value: </label>
+                <input type="text" name="firstValue"  oninput="check2(event,this)" class="red" value="">&nbsp;+&nbsp;
+                <label for="secondValue">Second Value: </label>
+                <input type="text" name="secondValue" id="" oninput="check2(event,this)" class="red" value="">&nbsp;=&nbsp;
+                <input type="text" name="sum2" id="sum2" class="red"><br>
+            </div>
+        </form>
+    </div>
+    <div>
+        <form action="" id="fourthForm" name="">
+            <div>
+                <fieldset ><legend>Exercises 5 & 6</legend></fieldset><br>
+                <label for="firstValue">Value: </label>
+                <input type="text" name="firstValue"  oninput="check4(event,this)" class="red" value="" maxlength="10">&nbsp;&nbsp;
+                <span id="length" >Nothing to see here for now.</span>
+            </div>
+        </form>
+    </div>
+    <div>
+        <form action="" id="fifthForm" name="">
+            <div>
+                <fieldset ><legend>Exercise 7</legend>Can't introduce anything but numbers.</fieldset><br>
+                <label for="firstValue">Value: </label>
+                <input type="text" name="firstValue"  onkeypress="check5(event,this)" class="red" value="">&nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
+    <div>
+        <table id="myTable">
+            <tr>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+            </tr>
+            <tr>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+            </tr>
+            <tr>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+                <td><img onmouseover="check6(event,this)" onmouseout="check7(event, this)" onclick="check8(event, this)" src="http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg" alt=""> </td>
+            </tr>
+        </table>
+    </div>
+<script src="./script.js"></script>
+</body>
+</html>

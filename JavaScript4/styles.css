@@ -76,12 +76,11 @@
 
 #myTable td{
     border: 1px dotted;
-    width: 250px !important;
-    height: 250px;
+    width:500px !important;
+    height: 350px;
 }
 
 #myTable img{
-    width: 250px;
-    height: 250px;
-    border: 1px solid red;
+    width:500px;
+    height: 350px;
 }

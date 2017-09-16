@@ -166,12 +166,16 @@ function check4(event){
 
 
 function check5(event){
-    // var firstValue = document.querySelector('#fifthForm [name = "firstValue"]');
+    var firstValue = document.querySelector('#fifthForm [name = "firstValue"]');
     
-    // var firstValueP = parseInt(firstValue.value);
+    var firstValueP = parseInt(firstValue.value);
 
-    if(event.key >= "a" && event.key <= "z"){
+    if(event.key >= "a" || event.key <= "z"){
+        firstValue.addEventListener("keypress", function(event){
             event.preventDefault()
+        });
+    }else{
+
     }
     
 }
@@ -196,75 +200,33 @@ function check5(event){
 // }
 
 
-// function check6(event, elem){
-//     // document.getElementById("altParagraf").getAttribute("src");
-
-// // document.getElementById("altParagraf").setAttribute("src", "");
-//     elem.src = ("http://www.drodd.com/images14/x12.jpg");
-//     console.log("mouseover", elem);
-//     console.log("mouseover", elem.value);
-
-// }
-
-// function check7(event, elem){
-
-//     elem.src = ("http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg");
-//     console.log("mouseout", elem);
-//     console.log("mouseout", elem.value);
-
-// }
-
-// function check8(event, elem){
-
-//     elem.src = ("http://www.drodd.com/images14/x12.jpg");
-//     console.log("click", elem);
-//     console.log("click", elem.value);
-
-//     elem.addEventListener("mouseout", function(event){
-//         event.preventDefault();
-//         event.stopPropagation();
-//     });
- 
-// }
-//---------------NEEDS LITTLE BUG FIXING----------------------------------
-var counter = 0;
 function check6(event, elem){
-    	if(counter == 0 || counter == 2  || counter == 4  || counter == 6 || counter == 8){
-      elem.src = ("http://www.drodd.com/images14/x12.jpg")
-      }
-      else if(counter == 1 || counter == 3  || counter == 5  || counter == 7 || counter == 9 && elem.src == "https://destepti.ro/wp-content/uploads/2012/06/Zero.jpg"){
-      if(elem.src == "http://www.drodd.com/images14/x12.jpg" && elem.alt == "yesBaby"){
-      	elem.src = ("http://www.drodd.com/images14/x12.jpg")
-      }
-      elem.src = ("https://destepti.ro/wp-content/uploads/2012/06/Zero.jpg")
-      }
-    
+    // document.getElementById("altParagraf").getAttribute("src");
+
+// document.getElementById("altParagraf").setAttribute("src", "");
+    elem.src = ("http://www.drodd.com/images14/x12.jpg");
     console.log("mouseover", elem);
+    console.log("mouseover", elem.value);
+
 }
 
 function check7(event, elem){
 
-		if(elem.alt == "yesBaby"){
-  	elem.addEventListener("mouseout", function(event){
-        event.preventDefault();
-    });
-  }else if(elem.alt == "noBaby"){
-  	elem.src = ("https://destepti.ro/wp-content/uploads/2012/06/Zero.jpg")
-  }
-  else{
-  	elem.src = ("http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg");
+    elem.src = ("http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg");
     console.log("mouseout", elem);
-  }
+    console.log("mouseout", elem.value);
+
 }
+
 function check8(event, elem){
-		
-   if(elem.src == "http://www.drodd.com/images14/x12.jpg"){
-   	elem.alt="yesBaby"
-   }
-   else if(elem.src == "https://destepti.ro/wp-content/uploads/2012/06/Zero.jpg"){
-    elem.alt="noBaby"
-   }
-   	counter++;
+
+    elem.src = ("http://www.drodd.com/images14/x12.jpg");
     console.log("click", elem);
-    console.log("counter : ", counter);
+    console.log("click", elem.value);
+
+    elem.addEventListener("mouseout", function(event){
+        event.preventDefault();
+        event.stopPropagation();
+    });
+ 
 }
