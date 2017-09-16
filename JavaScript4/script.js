@@ -1,232 +1,103 @@
+var grades = [8, 7, 3, 9, 10, 2, 1];
+var grades2 = [8, 7, 3, 9, 10, 2, 1];
 
-// console.log("a is grater than b : " + f3("abc 2", "abc 12"));
-
-//////////////////////////////////////=======================DOOM---------------------------------------------------------------
-
-// document.getElementById("moloz").innerHTML = "alt <br> moloz";
-
-// document.getElementById("altParagraf").innerText = "alt <br>  moloz";
-
-// var myDivs = document.getElementsByClassName("fancy");
-
-// for(var i=0; i<myDivs.length; i++){
-//     myDivs[i].innerHTML = myDivs[i].innerHTML + "it works" + " at " + Date();
-// }
-
-// .innerHtml OR  .style ----------------------------------css------------------
-// document.getElementById("moloz").style.color = "black";
-// document.getElementById("altParagraf").style.backgroundColor = "red";
-
-// for img -  WHICH HAS NO CLOSING TAG ---------------------
-
-// document.getElementById("altParagraf").getAttribute("src");
-
-// document.getElementById("altParagraf").setAttribute("src", "");
-// document.getElementById("altParagraf").src = ("src");
-//------------------------------------------------------------------------------------------------------------------------------------------
-// .classList.add();
-// .classList.remove();
-
-
-// .querySelector("");
-// .querySelectorAll("#test .fancy span");
-
-//------------------------------------------------------------------------------------------------------------------------------------------
-
-// function changeColor(){
-//     document.getElementById("moloz").style.backgroundColor="green";
-
-// }
-// function changeColor2(){
-//     document.getElementById("moloz").style.backgroundColor="red";
-    
-// }
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------
-// document.querySelector('#myForm [name ="firstName"]');
-
-// var firstNameElem = document.querySelector('#myForm [name ="firstName"]');
-// var lastNameElem = document.querySelector('#myForm [name ="lastName"]');
-
-// alert(firstNameElem.value);
-
-// function keyDown(){
-//     console.log("keyDown", firstNameElem.value);
-// }
-
-// function keyUp(){
-//     console.log("keyUp", firstNameElem.value);
-// }
-// function keyPress(){
-//     console.log("keyPress", firstNameElem.value);
-// }
-
-// function change(){
-//     console.log("change", firstNameElem.value);
-// }
-//------------------------------------------------------------------------------------------------------------------------------------------
-// function input(event, elem){
-//     console.log("input", elem.value);
-//     document.getElementById("hello").innerHTML = "Servus" + " "+ elem.value  + " !";
-// }
- 
-// or
-
-// function input(event){
-//     // console.log("input", elem.value);
-//     document.getElementById("hello").innerHTML = "Servus" + " " + firstNameElem.value + " "+ lastNameElem.value + " !";
-// }
-//------------------------------------------------------------------------------------------------------------------------------------------
-// function add(event){
-//     var firstNumber = document.querySelector('#myForm [name ="firstNumber"]');
-//     var secondNumber = document.querySelector('#myForm [name ="secondNumber"]');
-
-//     var add = parseInt(firstNumber.value) + parseInt(secondNumber.value);
-
-//     document.getElementById("sum").value = add;
-
-    // if( isNaN(parseInt(firstNumber.value))){
-    //     firstNumber.value = firstNumber.value + 0;
-    // }
-    // else if( isNaN(parseInt(secondNumber.value))){
-    //     secondNumber.value = secondNumber.value + 0;
-    // }
-// }
-
-
-
-
-function check(event){
-    var firstValue = document.querySelector('#firstForm [name = "firstValue"]');
-    var secondValue = document.querySelector('#firstForm [name = "secondValue"]');
-
-    if(parseInt(firstValue.value) > parseInt(secondValue.value)){
-        firstValue.style.color = "green";
-        secondValue.style.color = "red";
-
-    }else if(parseInt(firstValue.value) === parseInt(secondValue.value)){
-        firstValue.style.color = "green";
-        secondValue.style.color = "green";
-
-    }else if(parseInt(firstValue.value) < parseInt(secondValue.value)){
-        secondValue.style.color = "green";
-        firstValue.style.color = "red";
-
-    }else{
-        firstValue.style.color = "red";
-        secondValue.style.color = "red";
+function maxim(a){
+    var max = 0;
+    for (var i=0; i< a.length; i++){
+        if (max < a[i]){
+             max = a[i];
+        }
     }
-    
+    return max;
 }
 
-function check2(event){
-    var firstValue = document.querySelector('#secondForm [name = "firstValue"]');
-    var secondValue = document.querySelector('#secondForm [name = "secondValue"]');
-
-    var add = parseInt(firstValue.value) + parseInt(secondValue.value);
-
-    document.getElementById("sum2").value = add;
+function minim(a){
     
-}
-
-function check3(event){
-    var firstValue = document.querySelector('#thirdForm [name = "firstValue"]');
-    var secondValue = document.querySelector('#thirdForm [name = "secondValue"]');
-
-    if(parseInt(firstValue.value) > parseInt(secondValue.value)){
-        document.getElementById("bigger").value = firstValue.value;
-
-    }else if(parseInt(firstValue.value) === parseInt(secondValue.value)){
-        document.getElementById("bigger").value = "They are equal."
-
-    }else if(parseInt(firstValue.value) < parseInt(secondValue.value)){
-        document.getElementById("bigger").value = secondValue.value;
-
-    }    
-}
-
-function check4(event){
-    var firstValue = document.querySelector('#fourthForm [name = "firstValue"]');
-    var limit  = firstValue.value.length;
-    
-    document.getElementById("length").innerHTML = "The length of the input : " + "<p id =\"alertLimit\">" + limit + "</p>";
-    
-    if (limit >= 10){
-        document.getElementById("alertLimit").style.color = "red";
-        // firstValue.addEventListener("keypress", function(event){
-        //     event.preventDefault()
-        // });
+    var min= a[0]; 
+    for (var i=0; i< a.length; i++){
+        if (a[i] < min){
+             min = a[i];
+        }
     }
-    // else{
-
-    // }
-    
+    return min;
 }
 
-
-function check5(event){
-    var firstValue = document.querySelector('#fifthForm [name = "firstValue"]');
-    
-    var firstValueP = parseInt(firstValue.value);
-
-    if(event.key >= "a" || event.key <= "z"){
-        firstValue.addEventListener("keypress", function(event){
-            event.preventDefault()
-        });
-    }else{
-
+function maxPosition(arr, a){
+    var position =0;
+    for (var k=0; k < arr.length; k++){
+        if (a == arr[k]){
+             return position = k;
+        }
     }
-    
+}
+
+function minPosition(arr, a){
+    var position =0;
+    for (var j=0; j < arr.length; j++){
+        if (a == arr[j]){
+             return position = j;
+        }
+    }
+}
+
+console.log("the min is " + minim(grades2));
+console.log("the max is " + maxim(grades));
+console.log("the number is at position " +  maxPosition(grades, maxim(grades)));
+maxPosition(13);
+
+function sortDesc(a){
+    a = a.slice();
+    var sortedArray1 = [];
+    var nrElem = a.length;
+    for(i=0; i< nrElem; i++){
+        var maximum = maxim(a);
+        var maximPosition = maxPosition(a, maximum);
+        sortedArray1.push(maximum);
+        a.splice(maximPosition,1);
+    }
+    displayNote(sortedArray1);
+    return  sortedArray1;
+}
+function sortAsc(a){
+    a = a.slice();
+    var sortedArray2 = [];
+    var nrElem = a.length;
+    for(i=0; i< nrElem; i++){
+        var minimum = minim(a);
+        var minimPosition = minPosition(a, minimum);
+        sortedArray2.push(minimum);
+        a.splice(minimPosition,1);
+    }
+    displayNote(sortedArray2);
+    return  sortedArray2;
+}
+console.log(sortDesc(grades));
+console.log(sortAsc(grades2));
+
+// ==================================================  SORT GRADES FROM 1 to 10=========================
+var note = []; 
+
+function generateRandom1to10(){
+    return Math.floor(Math.random() * 10);
+}
+
+function displayNote(a){
+    var eleviHTML = "";
+    for(var i=0; i<a.length; i++){
+        eleviHTML += "<div>Nota: " + a[i] + "</div><br>";
+    }
+    document.getElementById("note").innerHTML = eleviHTML;
 }
 
 
-
-
-// function add(event){
-//     var firstNumber = document.querySelector('#myForm [name ="firstNumber"]');
-//     var secondNumber = document.querySelector('#myForm [name ="secondNumber"]');
-
-//     var add = parseInt(firstNumber.value) + parseInt(secondNumber.value);
-
-//     document.getElementById("sum").value = add;
-
-    // if( isNaN(parseInt(firstNumber.value))){
-    //     firstNumber.value = firstNumber.value + 0;
-    // }
-    // else if( isNaN(parseInt(secondNumber.value))){
-    //     secondNumber.value = secondNumber.value + 0;
-    // }
-// }
-
-
-function check6(event, elem){
-    // document.getElementById("altParagraf").getAttribute("src");
-
-// document.getElementById("altParagraf").setAttribute("src", "");
-    elem.src = ("http://www.drodd.com/images14/x12.jpg");
-    console.log("mouseover", elem);
-    console.log("mouseover", elem.value);
-
+function generateRandomArray(){
+    var randomNote = [];
+    for(var i = 0; i< 10; i++){
+        var valoareRandom = generateRandom1to10();
+        randomNote.push(valoareRandom);
+    }
+    return randomNote;
 }
 
-function check7(event, elem){
-
-    elem.src = ("http://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg");
-    console.log("mouseout", elem);
-    console.log("mouseout", elem.value);
-
-}
-
-function check8(event, elem){
-
-    elem.src = ("http://www.drodd.com/images14/x12.jpg");
-    console.log("click", elem);
-    console.log("click", elem.value);
-
-    elem.addEventListener("mouseout", function(event){
-        event.preventDefault();
-        event.stopPropagation();
-    });
- 
-}
+note = generateRandomArray();
+displayNote(note);
