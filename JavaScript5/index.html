@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
-    <title>HTML JavaScript4</title>
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <title>HTML JavaScript</title>
 </head>
 <body>
     <div class="container">
@@ -19,13 +20,13 @@
 
 <!-- ----------------------------------------------- TEMA JS 7------------------------------------- -->
 
-    <div>
+    <!-- <div>
         <form action="" id="eleviForm" name="">
             <div>
                 <br><fieldset><legend>Lista elevi: </legend></fieldset><br>
                 <label for="firstName">Nume: </label>
                 <input type="text" name="firstName" placeholder="Cristian" id="">
-                <button onclick="adaugaElev(); displayElevi()" onkeypress="if(event.keyCode==13)">Adauga elev</button>
+                <button onclick="">Adauga elev</button>
             </div>
             <hr>
             <div>
@@ -57,6 +58,36 @@
                 </div>
             </div><br>
         </form>
+    </div> -->
+    <div id="elevi_wrapper">
+        <h1>Lista Elevi</h1>
+        <div id="adaugare_elev_wrapper">
+            <input onkeypress="if(event.keyCode==13){document.getElementById('btnAdaugareElev').click()}"type="text" name="" id="nume_elev" autofocus>
+            <button onclick="adaugareElev(); displayElevi();" id="btnAdaugareElev">
+                Adauga Elev
+            </button>
+        </div>
+        <div id="lista_elevi">
+
+        </div>
+    </div>
+    <div id="note_wrapper">
+        <button id="ascundeNote" onclick="hideNote()">
+            <span>Lista Elevi</span>
+        </button>
+        <h1>Lista Note</h1>
+        <div>
+            <h2>Nume elev: <span id="span_nume_elev"></span></h2>
+        </div>
+        <div id="adaugare_note_wrapper">
+                <input onkeypress="if(event.keyCode==13){document.getElementById('btnAdaugareNota').click()}"type="number" name="" id="note_elev" autofocus>
+                <button onclick="adaugaNota(); displayNote(); medieNote[indexElevPeCareAmDatClick]=medieNoteElev(); displayElevi();" id="btnAdaugaNota">
+                    Adauga Nota
+                </button>
+            </div>
+            <div id="lista_note">
+    
+            </div>
     </div>
 
 <script src="./script.js"></script>

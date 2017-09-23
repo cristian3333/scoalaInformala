@@ -1,4 +1,4 @@
-legend{
+ /* legend{
     font-size:20px;
 }
 
@@ -11,8 +11,7 @@ legend{
     padding: 10px;
     border: 1px dotted;
     margin: 10px 10px;
-    /* text-align: center; */
-    background-color:#ACFE2F !important;
+    background-color:#ACFE2F;
     float:left;
 }
 
@@ -22,8 +21,28 @@ legend{
     padding: 10px;
     border: 1px dotted;
     margin: 10px 10px;
-    background-color:#ADD8E5 !important;
+    background-color:#ADD8E5;
     position: absolute;
     left: 50%;
+}  */
+
+#elevi_wrapper{
+    background-color: #ACFE2F;
+    width:100%;
+    height:100%;
 }
 
+#note_wrapper{
+    background-color: #ADD8E5;
+    display:none;
+    width:50%;
+    float:right;
+}
+
+#ascundeNote{
+    float: left;
+}
+
+td{
+    border: 1px solid;
+}
