@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+      <div id="input_wrapper">
+        <input autofocus type="text" id="oras" onkeypress="checkEnter(event)">
+        <button onclick="afiseazaVremea()" id="afiseazaVremea">Afiseaza Vremea</button>
+        <button onclick="afiseazaPrognoza()" id="afiseazaPrognoza">Afiseaza Prognoza</button>
+      </div>
+      <br>
+      <div id="vremea_wrapper">
+        <h2>Vremea acum</h2><hr>
+        <div >
+          <img id="image" src="" alt="">
+        </div>
+        <div id="descriere">
+        </div>
+        <div id="umiditate">
+        </div>
+        <div id="presiune">
+        </div>
+        <div id="temperatura_acum">
+        </div>
+        <div id="minima">
+        </div>
+        <div id="maxima">
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" style="text-align:center; margin-top: 30px">
+            <button class="btn btn-default" ><a href="../index.html" style="text-decoration: none; color:red; display: block">Back to Main</a></button>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript" src="./script.js"></script>
+  </body>
+</html>
