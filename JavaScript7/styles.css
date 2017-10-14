@@ -17,6 +17,13 @@ body{
     background-color: #e9e9e9;
 }
 
+#prognoza_wrapper{
+    display: block;
+    margin: auto;
+    padding: 20px 40px;
+    background-color: #e9e9e9;
+}
+
 #oras{
     width:70%;  
     margin-left:20px;
@@ -24,11 +31,25 @@ body{
     font-size:20px;
 }
 
-#descriere > p{
-    margin-top:0;
+#descriereP > p{
+    padding-right:10px;
 }
 
 button{
     padding: 10px;
     height: 35  px;
+}
+
+#dayP p{
+    background-color: lightblue;
+    float: none;
+}
+
+#moloz{
+    float:left;
+    display: inline-flex;
+}
+
+.container{
+    background-color: #e9e9e9;
 }

@@ -98,6 +98,59 @@ var URL_FORECAST_WEATHER = "https://api.openweathermap.org/data/2.5/forecast?app
 var URL_WEATHER_ICON_PREFIX = "http://openweathermap.org/img/w/"; // sufix .png
 
 var gJson;
+var hJson;
+
+function afiseazaPrognoza(){
+  var oras = document.getElementById("oras").value;
+  console.log(oras);
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+
+      var json = this.responseText;
+      console.log(json);
+      hJson = json;
+
+    document.getElementById("prognoza_wrapper").style.display ="block";
+    
+    var details = document.getElementById("hourDetails").innerHTML;
+    console.log("details" + details);
+
+    for(var i=JSON.parse(json).list.length-1; i>=0; i--){
+      
+      var imageP = JSON.parse(json).list[i].weather[0].icon;
+      document.getElementById("imageP").src = `${URL_WEATHER_ICON_PREFIX}${imageP}.png`
+  
+      var temperaturaAcumP = JSON.parse(json).list[0].main.temp;
+      document.getElementById("temperatura_acumP").innerHTML = `<p>Temperatura curenta:  ${temperaturaAcumP} </p>`
+  
+      var descriereP = JSON.parse(json).list[i].weather[0].description;
+      document.getElementById("descriereP").innerHTML = `<p>Descriere:  ${descriereP} </p>`
+  
+      var oraP = JSON.parse(json).list[i].dt;
+      document.getElementById("oraP").innerHTML = `<p>Ora:  ${moment.unix(oraP).format("HH:mm")} </p>`
+  
+      var dayP = JSON.parse(json).list[i].dt;
+      document.getElementById("dayP").innerHTML = `<p>Ziua:  ${moment.unix(JSON.parse(json).list[i].dt).format("DD/MM/YYYY")} </p>`
+      if(moment.unix(JSON.parse(json).list[i--].dt).format("DD") !== moment.unix(JSON.parse(json).list[i].dt).format("DD")){
+        document.getElementById("dayP").style.backgroundColor = "lightblue";
+        document.getElementById("moloz").style.clear = "both";
+      }else{
+        document.getElementById("moloz").style.display = "block";
+      }
+      
+      document.getElementById("hourDetails").innerHTML = details + document.getElementById("hourDetails").innerHTML;
+      
+    }
+    
+    
+    }
+  };
+  xhttp.open("GET", URL_FORECAST_WEATHER + oras, true);
+  xhttp.send();
+}
 
 function afiseazaVremea() {
   var oras = document.getElementById("oras").value;
@@ -109,7 +162,7 @@ function afiseazaVremea() {
       //aici incepe se trateaza response de la server
       var json = this.responseText;
       console.log(json);
-      gJson=json;
+      h=json;
 
       document.getElementById("vremea_wrapper").style.display ="block";
 
@@ -136,7 +189,7 @@ function afiseazaVremea() {
       //aici se termina tratamentul raspunsului de la server
     }
   };
-  xhttp.open("GET", URL_CURRENT_WEATHER + oras, true);
+  xhttp.open("GET", URL_CURRENT_WEATHER + oras, false);
   xhttp.send();
 
 }
