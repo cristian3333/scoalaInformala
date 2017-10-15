@@ -110,7 +110,6 @@ function afiseazaPrognoza(){
     if (this.readyState == 4 && this.status == 200) {
 
       var json = this.responseText;
-      console.log(json);
       hJson = json;
 
     document.getElementById("prognoza_wrapper").style.display ="block";
@@ -161,7 +160,6 @@ function afiseazaVremea() {
     if (this.readyState == 4 && this.status == 200) {
       //aici incepe se trateaza response de la server
       var json = this.responseText;
-      console.log(json);
       h=json;
 
       document.getElementById("vremea_wrapper").style.display ="block";

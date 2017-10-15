@@ -1,0 +1,39 @@
+body{
+    background-color: #fcefef;    
+}
+#mainWrapper{
+    margin: auto;
+    text-align: center;
+}
+
+#addContactWrapper{
+    background-color: orange;
+    width: 30%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#add {
+    background-color: blue;
+    border-radius: 5px;
+    padding: 5px;
+    color:white;
+}
+
+#contactsListWrapper{
+    background-color: orange;
+    width: 30%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 20px;
+    display:none;
+}
+
+table{
+    margin: auto;
+}
+
+td{
+    padding: 0px 25px;
+}

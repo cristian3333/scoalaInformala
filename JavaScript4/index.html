@@ -1,66 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <title>HTML JavaScript4</title>
-    <link rel="icon" href="../favicon(1).ico"> 
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12" style="text-align:center; margin-top: 30px">
-                <button class="btn btn-default" ><a href="../index.html" style="text-decoration: none; color:red; display: block">Back to Main</a></button>
-             </div>
+ <html>
+     <head>
+        <link rel="stylesheet" href="style.css">
+     </head> 
+     <body>
+         <div id="mainWrapper">
+            <h1>Agenda</h1>
+            <div id="agendaWrapper">
+                <div id="addContactWrapper">
+                    Nume:&nbsp;<input required type="text" id="contactName" autofocus>
+                    Telefon:&nbsp;<input required type="text" id="phoneNumber" onkeydown="onlyNumbers(event)" onkeyup="if(event.keyCode==13){document.getElementById('add').click()}">
+                    <div><br>
+                        <button id="add" onclick="addContact(); displayContacts()">ADAUGA CONTACT</button>
+                    </div>
+                </div>
+                <br>
+                <div id="contactsListWrapper">
+                </div>
+            </div>
+         </div>
+        <div>
+            <div style="text-align:center; margin-top: 30px">
+                <button ><a href="../index.html" style="text-decoration: none; color:red; display: block">Back to Main</a></button>
+            </div>
         </div>
-    </div>
-<!-- --------------------------------------------------JS4 - curs---------------------------------------------------------- -->
-    <!-- <div id="note"></div>
-    <button onclick="sortAsc(note)">Sort Ascending</button>
-    <button onclick="sortDesc(note)">Sort Descending</button> -->
-
-<!-- ----------------------------------------------- TEMA JS 7------------------------------------- -->
-
-    <div>
-        <h1>Not functional/finished</h1>
-        <form action="" id="eleviForm" name="">
-            <div>
-                <br><fieldset><legend>Lista elevi: </legend></fieldset><br>
-                <label for="firstName">Nume: </label>
-                <input type="text" name="firstName" placeholder="Cristian" id="">
-                <button onclick="adaugaElev(); displayElevi()" onkeypress="if(event.keyCode==13)">Adauga elev</button>
-            </div>
-            <hr>
-            <div>
-                <label for="age">
-                    <a href="#">Sorteaza ascendent dupa medie note</a><br>
-                    <a href="#">Sorteaza descendent dupa medie note</a>    
-                </label><br>
-                <div id="lista_elevi_wrapper">
-                    <span>Nu exista elevi in catalog</span>
-                </div>
-            </div><br>
-        </form>
-        <form action="" id="noteForm" name="">
-            <div>
-                <button onclick="hideNote()">Ascunde notele</button>
-                <fieldset><legend>Note elev: a[i].name </legend></fieldset><br>
-                <label for="firstName">Nota: </label>
-                <input type="text" name="nota" placeholder="10" id="">
-                <button onclick="addNote()">Adauga nota</button>
-            </div>
-            <hr>
-            <div>
-                <label for="age">
-                    <button onclick="sortAsc(note)">Sorteaza ascendent notele</button><br>
-                    <button onclick="sortDesc(note)">Sorteaza descendent notele</button>    
-                </label><br>
-                <div id="note_elev_wrapper">
-                    <span>Nu exista note in catalog</span>                            
-                </div>
-            </div><br>
-        </form>
-    </div>
-
-<script src="./script.js"></script>
-</body>
+     </body> 
+     <script src="script.js"></script>
 </html>
