@@ -2,8 +2,6 @@
  <html>
      <head>
         <link rel="stylesheet" href="style.css">
-        <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
      </head> 
      <body>
          <div id="mainWrapper">
@@ -13,9 +11,7 @@
                     Nume:&nbsp;<input required type="text" id="contactName" autofocus>
                     Telefon:&nbsp;<input required type="text" id="phoneNumber" onkeydown="onlyNumbers(event)" onkeyup="if(event.keyCode==13){document.getElementById('add').click()}">
                     <div><br>
-                        <button id="add" onclick="addContact(); getAgenda()">ADAUGA CONTACT</button>
-                        <button id="save" onclick="saveChanges()">SALVEAZA MODIFICAREA</button>
-                        <button id="show" onclick="displayContacts()">AFISEAZA AGENDA</button>                        
+                        <button id="add" onclick="addContact(); displayContacts()">ADAUGA CONTACT</button>
                     </div>
                 </div>
                 <br>
