@@ -11,11 +11,11 @@
             <div id="agendaWrapper">
                 <div id="addContactWrapper">
                     Nume:&nbsp;<input required type="text" id="contactName" autofocus>
-                    Telefon:&nbsp;<input required type="text" id="phoneNumber" onkeydown="onlyNumbers(event)" onkeyup="if(event.keyCode==13){document.getElementById('add').click()}">
+                    Telefon:&nbsp;<input required type="text" id="phoneNumber" onkeydown="" onkeyup="if(event.keyCode==13){document.getElementById('add').click()}">
                     <div><br>
                         <button id="add" onclick="addContact(); getAgenda()">ADAUGA CONTACT</button>
                         <button id="save" onclick="saveChanges()">SALVEAZA MODIFICAREA</button>
-                        <button id="show" onclick="displayContacts()">AFISEAZA AGENDA</button>                        
+                        <!-- <button id="show" onclick="displayContacts()">AFISEAZA AGENDA</button>                         -->
                     </div>
                 </div>
                 <br>
@@ -30,4 +30,5 @@
         </div>
      </body> 
      <script src="script.js"></script>
+     <script> getAgenda()</script>
 </html>

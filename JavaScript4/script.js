@@ -3,25 +3,38 @@ var index = '';
 
 var getContactList = "https://agenda-cristian-v1.firebaseio.com/contactList/.json";
 
-// window.onload = function() {
-//     getAgenda();
-//   };
+var config = {
+    apiKey: "<API_KEY>",
+    authDomain: "<PROJECT_ID>.firebaseapp.com",
+    databaseURL: "https://agenda-cristian-v1.firebaseio.com",
+    storageBucket: "<BUCKET>.appspot.com",
+    messagingSenderId: "<SENDER_ID>",
+  };
+  firebase.initializeApp(config);
 
+  
+function snapshotToArray(snapshot) {
+    var returnArr = [];
 
-    // if(contactList.length !== 0){
-    //     var set = setInterval(function(){ displayContacts() }, 2000);
-    //   }else{
-    //       document.getElementById("contactsListWrapper").style.display="block !important";
-    //   }
-  
-  
+    snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+    });
+
+    return contactList = returnArr;
+};
 
 function getAgenda(){
-    snapshotToArray();
+    
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        // console.log(JSON.stringify(this.responseText));
+        firebase.database().ref('/contactList').on('value', function(snapshot) {
+            snapshotToArray(snapshot);
+            displayContacts();
+        });
       }
     };
     xhttp.open("GET", getContactList, true);
@@ -49,6 +62,7 @@ function saveChanges(){
         if(xhttp.readyState == 4 && xhttp.status == 200) {
             console.log(xhttp.responseText);
             index = '';
+            displayContacts();
         }
     }
 }
@@ -81,6 +95,7 @@ function addContact(){
         xhttp.onreadystatechange = function() {//Call a function when the state changes.
             if(xhttp.readyState == 4 && xhttp.status == 200) {
                 console.log(xhttp.responseText);
+                displayContacts();
             }
         }
 
@@ -105,34 +120,9 @@ function addContact(){
 
 }
 
-var config = {
-    apiKey: "<API_KEY>",
-    authDomain: "<PROJECT_ID>.firebaseapp.com",
-    databaseURL: "https://agenda-cristian-v1.firebaseio.com",
-    storageBucket: "<BUCKET>.appspot.com",
-    messagingSenderId: "<SENDER_ID>",
-  };
-  firebase.initializeApp(config);
 
-  
-function snapshotToArray(snapshot) {
-    var returnArr = [];
 
-    snapshot.forEach(function(childSnapshot) {
-        var item = childSnapshot.val();
-        item.key = childSnapshot.key;
 
-        returnArr.push(item);
-    });
-
-    return contactList = returnArr;
-};
-
-firebase.database().ref('/contactList').on('value', function(snapshot) {
-    snapshotToArray(snapshot);
-    // console.log("Asta e array " + contactList);
-    // console.log("Asta e snapshot.val() " + snapshot.val());
-});
 
 function displayContacts(){
 //-- sugerata de Alin-------------------------------------------
