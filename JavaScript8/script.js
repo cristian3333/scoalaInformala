@@ -77,7 +77,7 @@ function displayList(){
         <div>${menuList[i].ingrediente}</div>
       </td>
       <td id="listButtons">
-        <a onclick="index=${i}; getPreparat()" type="button" href="./detalii.html?id=${i}"><button>DETALII</button></a>
+        <a onclick="index=${i}; getPreparat()" type="button" href="./detalii.html?id=${menuList[i].key}"><button>DETALII</button></a>
       </td>
     </tr>`
     }

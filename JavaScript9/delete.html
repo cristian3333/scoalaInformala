@@ -11,11 +11,12 @@
   <body>
     <div id="main">
       <div>
-          <span id="h1Contact">Cald si bun</span>
-          <a href="./index.html"><button id="menu">Meniu</button></a>
-          <a href="./contact.html"><button id="contact">Contact</button></a>
+          <span id="h1Contact">Cald si bun (Admin)</span>
         </div>
       <div id="preparat_wrapper">
+            <h1>Esti pe cale sa stergi preparatul: "<span id="numePreparat"></span>"</h1>
+            <h1>Confirmi stergerea?</h1>
+            <h1><a ><button id="admin" onclick="deletePrep()">Da</button></a><a href="./admin.html"><button id="admin" >Nu</button></a></h1> 
       </div>
     </div>
     <div>
@@ -25,17 +26,30 @@
     </div>
     <script type="text/javascript" src="./script.js"></script>
       <script>
-        function getQueryVariable(variable){
+         function getQueryVariable(variable){
               var query = window.location.search.substring(1);
               var vars = query.split("&");
               for (var i=0;i<vars.length;i++) {
                       var pair = vars[i].split("=");
-                      if(pair[0] == variable){return index=  pair[1].toString()}
+                      if(pair[0] == variable){return  index=  pair[1].toString()}
               }
               return(false);
         }
         getQueryVariable("id");
-        getPreparat();
+        (function getPreparat(){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              item = JSON.parse(xhttp.responseText);
+              firebase.database().ref('/contactList').on('value', function(snapshot) {
+                snapshotToArray(snapshot);
+                document.getElementById("numePreparat").innerHTML = item.nume;
+            }); 
+            }
+          };
+          xhttp.open("GET", "https://restaurant-cristian-v1.firebaseio.com/menu/" + index + "/.json", true);
+          xhttp.send();
+        })();
       </script>
   </body>
 </html>

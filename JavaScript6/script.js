@@ -1,3 +1,4 @@
+index='';
 var itemList = [];
 function addItem(){
   var elemHTML = document.getElementById('myInput').value;
@@ -5,9 +6,10 @@ function addItem(){
   itemList.push(elemHTML);
   console.log("itemList: " + itemList);
   for(var i=0; i<itemList.length; i++){
-    document.getElementById('myList').innerHTML = list + "<tr><td name='items'><p>" + itemList[i] + "</p></td><td><button type='button' onclick='buyed(itemList)'>Mark as buyed</button></td></tr>";
+    document.getElementById('myList').innerHTML = list + `<tr><td name="${index++}"><p id="change"> ${itemList[i]} </p></td><td><button type="button" onclick="index=${i}; bought()">Mark as bought</button></td></tr>`
 }
   document.getElementById('myInput').value = '';
+  document.getElementById('myInput').focus(); 
 }
 
 function checkEnter(event){
@@ -16,13 +18,11 @@ function checkEnter(event){
   }
 }
 
-function buyed(a){
-  document.querySelector("td[name='items'] p").style.textDecoration = "line-through";
-  //document.querySelector("td[name='items']").setAttribute("name","name");
-  // for(var i=0; i<a.length; i++){
-  // document.querySelector("td[name='items']").setAttribute("name",i);
-  // document.querySelector("td[name='i'] p").style.textDecoration = "line-through";
-  // }
+function bought(){
+  document.getElementById("change").setAttribute("class","bought");
+
+  console.log(itemList[index]);
+
 }
 
 function sortAscending(a){
