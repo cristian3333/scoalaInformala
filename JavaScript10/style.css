@@ -1,0 +1,208 @@
+#whiteBtn{
+    float:right;
+    background-color:white !important;
+    text-decoration:none;
+    text-decoration: none;
+    color: black !important;
+    margin-top: 10px;
+}
+#redBtn{
+    float:right;
+    background-color:red !important;
+    text-decoration:none;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+#main button{
+    padding: 10px;
+    height: 37px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    background-color:purple;
+}
+
+#title{
+    font-size: 3em;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.f_l{
+    float:left;
+}
+
+#products_wrapper {
+    -webkit-box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75);
+}
+
+#products_wrapper img{
+    width:100%;
+}
+
+#products_wrapper h1{
+    text-align: center;
+}
+#products_wrapper span{
+  padding: 10px 20px 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 22px;
+  font-weight: 500;
+}
+#products_wrapper >div{
+   padding: 20px;
+}
+
+#products_wrapper button{
+   float: right;
+    padding: 10px;
+    width:100px;
+    color: black;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75);
+    margin:0px 12px 12px 0px;
+}
+
+
+#produs_wrapper {
+    -webkit-box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75) !important;
+    box-shadow: 0px 0px 36px -7px rgba(0,0,0,0.75) !important;
+}
+
+#products_wrapperAdmin {
+    text-align: center;
+
+}
+
+#products_wrapperAdmin img{
+    height: 50px;
+}
+
+
+#editPrep{
+    font-size:20px;
+}
+
+#editPrep td{
+    padding:20px;
+    width:20%;
+}
+.w_70{
+    width: 80% !important;
+}
+.w_100{
+    width:100%;
+}
+.h_40{
+    height: 40px;
+    font-size:18px !important;
+}
+.h_80{
+    height: 80px;
+    font-size:18px !important;
+}
+#main{
+    background-color: white;
+    padding:50px;
+}
+
+#input_wrapper{
+    display: block;
+    padding: 10px;
+    float:left;
+    margin-right: 10px;
+    width:30%;
+}
+
+body{
+    margin: 40px 100px;
+}
+
+
+#contact {
+    font-size: 16px;
+    padding: 13px !important;
+    height: 50px !important;
+    float:right;
+    background-color:grey !important;
+    text-decoration:none;
+    text-decoration: none;
+}
+
+#contact a{
+    text-decoration: none;
+}
+
+#listImg>img{
+    height: 200px;
+    width: 200px;
+}
+
+#listImg{
+    width: 20%;
+}
+#preparatImg{
+    width:100%;
+}
+#preparatImg > img{
+    float: right;
+}
+#preparatInfo{
+    width: 50%;
+}
+#listButtons{
+    width: 20%;
+}
+#listInfo{
+    width: 60%;
+    padding-right:30px;
+    
+}
+#listButtons >a > button{
+    float:right;    
+    background-color:red !important;
+    text-decoration:none;
+    text-decoration: none;
+}
+
+#listInfo div{
+    font-size: 18px;
+}
+
+table{
+    width:100%;
+    padding: 30px 0px;
+}
+
+#admin{
+    float:left;    
+    background-color:red !important;
+    text-decoration:none;
+    text-decoration: none;
+}
+
+#map{
+    width:100%;
+    height:500px;
+}
+
+#h1Contact{
+    font-size: 3em;
+    font-weight: bold;
+    color:maroon;
+}
+
+
+
+#clock{
+    margin: auto 1px 0px 42%;    
+}
+

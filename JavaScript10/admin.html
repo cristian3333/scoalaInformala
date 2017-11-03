@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant App</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Magazin Electronic</title>
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="../grid_system_css.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="../favicon(1).ico">
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>  
     <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
@@ -12,10 +14,8 @@
   <body>
     <div id="main">
       <div>
-        <h1 id="title">Cald si bun</h1>
-        <input autofocus type="text" id="input_wrapper" onkeypress="if(event.keyCode==13){document.getElementById('cautaInIngrediente').click()}" tabindex="1">
-        <button onclick="getList()" id="cautaInIngrediente">Cauta in ingrediente</button>
-        <a href="./contact.html"><button id="contact">Contact</button></a>
+        <a id="title" href="./index.html"><span >Talcioc</span></a>
+        <a href="./cart.html"><button onclick="getList()" id="redBtn"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>&nbsp;COS CUMPARATURI</button></a>
       </div>
       <div id="clock"><svg width="200px" height="200px" margin:"auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-lds-clock">
         <g transform="translate(50 50)">
@@ -31,8 +31,9 @@
             </g>
           </g>
         </g>
-      </svg></div>
-      <div id="food_wrapper">
+      </svg>
+    </div>
+      <div id="products_wrapperAdmin">
       </div>
     </div>
     <div>
@@ -42,7 +43,7 @@
     </div>
       <script type="text/javascript" src="./script.js"></script>
       <script>
-      getList();
+      getListAdmin();
       </script>
   </body>
 </html>

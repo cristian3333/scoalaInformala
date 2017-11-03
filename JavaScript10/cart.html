@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Magazin Electronic</title>
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="../grid_system_css.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="../favicon(1).ico">    
+    <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>    
+  </head>
+  <body>
+    <div id="main">
+        <div>
+            <a id="title" href="./index.html"><span >Talcioc</span></a>
+            <a href="./cart.html"><button onclick="getList()" id="redBtn"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>&nbsp;COS CUMPARATURI</button></a>
+        </div>
+      <div id="shoppingCart_wrapper">
+      </div>
+    </div>
+    <div>
+        <div style="text-align:center; margin-top: 30px">
+            <button ><a href="../index.html" style="text-decoration: none; color:red; display: block">Back to Main</a></button>
+        </div>
+    </div>
+    <script type="text/javascript" src="./script.js"></script>
+      <script>
+          displayShoppingList()
+      </script>
+  </body>
+</html>

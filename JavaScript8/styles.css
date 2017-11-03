@@ -98,3 +98,6 @@ table{
     font-size: 2em;
     font-weight: bold;
 }
+#clock{
+    margin: auto 1px 0px 42%;    
+}
