@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magazin Electronic</title>    
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
     <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../grid_system_css.css">
     <link rel="stylesheet" href="./style.css">
@@ -18,7 +19,6 @@
         <a href="./admin.html"><button id="whiteBtn"><i class="fa fa-lock fa-lg" aria-hidden="true"></i>&nbsp;ADMIN</button></a>
         <a href="./cart.html"><button onclick="getList()" id="redBtn"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>&nbsp;COS CUMPARATURI</button></a>
       </div>
-
       <div id="clock"><svg width="200px" height="200px" margin:"auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-lds-clock">
           <g transform="translate(50 50)">
             <g ng-attr-transform="scale({{config.scale}})" transform="scale(0.8)">
@@ -37,6 +37,13 @@
       </div>
       <div id="products_wrapper">
       </div>
+      <div  style="clear:both"></div>
+      <h2 class="w3-center" style="max-width:500px;margin: auto;text-align: center;">OFERTE:</h2>
+      <div class="w3-content w3-section" style="max-width:500px;margin: auto;">
+        <img class="mySlides" src="https://positively.com/files/bunny-on-side.jpg" style="width:100%; height:200px">
+        <img class="mySlides" src="https://i.pinimg.com/originals/47/53/ff/4753ff5beab48d54a6b5bdaba2f56d15.jpg" style="width:100%;height:200px">
+        <img class="mySlides" src="https://www.petakids.com/wp-content/uploads/2015/11/Baby-Bunny.jpg" style="width:100%;height:200px">
+      </div>
     </div>
     <div>
         <div style="text-align:center; margin-top: 30px">
@@ -47,5 +54,21 @@
       <script>
       getList();
       </script>
+      <script>
+        var myIndex = 0;
+        carousel();
+        
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+               x[i].style.display = "none";  
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}    
+            x[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 3000); // Change image every 2 seconds
+        }
+        </script>
   </body>
 </html>

@@ -4,14 +4,18 @@ var productsList=[];
 var index = 0;
 var item={};
 var MENU_SERVER_URL = "https://talcioc-cristian-v1.firebaseio.com/productsList/.json";
+// var SHOPPING_LIST_URL = "https://talcioc-cristian-v1.firebaseio.com/cartList/" + cartId + "/shoppingList/.json";
+var CART_LIST_URL = "https://talcioc-cristian-v1.firebaseio.com/cartList/.json";
 shoppingList=[];
+cartList= [];
 
 var config = {
-  apiKey: "<API_KEY>",
-  authDomain: "<PROJECT_ID>.firebaseapp.com",
+  apiKey: "AIzaSyBzKpz3DlVJAlkOXxIw6pMDEGI4pFykwqw",
+  authDomain: "talcioc-cristian-v1.firebaseapp.com",
   databaseURL: "https://talcioc-cristian-v1.firebaseio.com",
-  storageBucket: "<BUCKET>.appspot.com",
-  messagingSenderId: "<SENDER_ID>",
+  projectId: "talcioc-cristian-v1",
+  storageBucket: "talcioc-cristian-v1.appspot.com",
+  messagingSenderId: "1097220088851",
 };
 
 firebase.initializeApp(config);
@@ -30,13 +34,40 @@ function snapshotToArray(snapshot) {
   return productsList = returnArr;
 };
 
+function snapshotToArrayShopping(snapshot) {
+  var returnArr = [];
+
+  snapshot.forEach(function(childSnapshot) {
+      var item = childSnapshot.val();
+      item.key = childSnapshot.key;
+
+      returnArr.push(item);
+  });
+
+  return shoppingList = returnArr;
+};
+
+function snapshotToArrayCart(snapshot) {
+  var returnArr = [];
+
+  snapshot.forEach(function(childSnapshot) {
+      var item = childSnapshot.val();
+      item.key = childSnapshot.key;
+
+      returnArr.push(item);
+  });
+
+  return cartList = returnArr;
+};
+
 class Product {
-  constructor(image, name, description, price, quantity){
+  constructor(image, name, description, price, quantity, id){
   this.image = image;
   this.name = name;
   this.description =description;
   this.price = price;
   this.quantity = quantity;
+  this.id = id;
   }
 }
 
@@ -81,7 +112,7 @@ function displayList(){
               </span>
               <span class="col-sm-6">
                   
-                  <a onclick="index=${i}; getProdus();" type="button" href="./details.html?id=${productsList[i].key}"><button>DETALII</button></a>
+                  <a onclick="getProdus();" type="button" href="./details.html?id=${productsList[i].key}"><button id="details">DETALII</button></a>
               </span>
             </div>
        </div>     
@@ -107,9 +138,10 @@ function getProdus(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       item = JSON.parse(xhttp.responseText);
-      firebase.database().ref('/contactList').on('value', function(snapshot) {
+      firebase.database().ref('/productsList').on('value', function(snapshot) {
         snapshotToArray(snapshot);
         displayProdus();
+        console.log(xhttp.responseText);
     });
     }
   };
@@ -129,20 +161,103 @@ function displayProdus(){
             <h2>${item.price}&nbsp;$</h2>
             <h3>In stoc: ${item.quantity}</h3>
             Cantitate: <input required type="number" id="quantity" tabindex=2 placeholder="1"><br><br>
-            <button onclick="addedProduct()">ADAUGA IN COS</button>
+            <button id="addToCart" onclick="addProductToShoppingList()">ADAUGA IN COS</button><span id="aver">&nbsp;&nbsp;&nbsp;Cantitatea poate fi modificata din cosul de cumparaturi</span>
           </div>
           `;
 
         preparatHTML += "</div>";
         document.getElementById("produs_wrapper").innerHTML = preparatHTML;
         document.getElementById("clock").style.display = "none";
+        document.getElementById("quantity").value = 1;
       }
 
+     
 
-function addedProduct(){
-  alert ("Produsul a fost adaugat");
-    shoppingList.push(item);
-}
+function addProductToShoppingList(){ 
+  var myOpacity=localStorage.getItem("opacity");
+  // alert ("Produsul a fost adaugat");
+  var prodImage = item.image;
+  var prodName = item.name;
+  var prodDescription = item.description;
+  var prodPrice = item.price;
+  var prodQuantity = document.getElementById('quantity').value;
+  var prodId = index;
+
+  var c = new Product(prodImage, prodName, prodDescription, prodPrice, prodQuantity,prodId );
+
+  if(idCart === null || idCart === undefined || idCart === ''){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if(xhttp.readyState == 4 && xhttp.status == 200) {
+        firebase.database().ref('/cartList').on('value', function(snapshot) {
+          snapshotToArrayCart(snapshot);
+          console.log(xhttp.responseText)
+          localStorage.setItem("idCart", JSON.parse(xhttp.responseText).name);
+          console.log(idCart);
+          document.getElementById("aver").style.opacity = "1";
+          document.getElementById("addToCart").disabled = 'true';
+          
+        });
+      }
+  }
+
+    xhttp.open("POST", "https://talcioc-cristian-v1.firebaseio.com/cartList/.json", true);
+    xhttp.send(JSON.stringify([c]));
+
+    
+  }
+  else{
+
+     var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                    
+                      console.log(JSON.parse(xhttp.responseText));
+                      localStorage.setItem("opacity", 1);
+                      document.getElementById("addToCart").disabled = 'true';
+                      document.getElementById("aver").style.opacity = "1";
+                    }
+                  }
+                  xhttp.open("POST", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + ".json", true);
+                  xhttp.send(JSON.stringify(c));
+
+      //   var xhttp = new XMLHttpRequest();
+      //   xhttp.onreadystatechange = function() {
+      //     if (this.readyState == 4 && this.status == 200) {
+      //       shoppingList = JSON.parse(xhttp.responseText);
+           
+
+      //       firebase.database().ref('/cartList/'+idCart).on('value', function(snapshot) {
+      //         snapshotToArrayShopping(snapshot);
+              
+      //           for(let i = 0; i< shoppingList.length; i++){
+      //             console.log(JSON.parse(xhttp.responseText)[i].id);
+      //             if(shoppingList[i].id === index){
+      //               console.log(JSON.parse(xhttp.responseText)[0].id);
+      //               console.log("wtf",JSON.parse(xhttp.responseText)[i].id);
+      //               var axhttp = new XMLHttpRequest();
+      //               axhttp.onreadystatechange = function() {
+      //                 if (this.readyState == 4 && this.status == 200) {
+                      
+      //                   console.log(JSON.parse(axhttp.responseText));
+      //                 }
+      //               }
+      //               axhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/"+ i +"/.json", true);
+      //               axhttp.send(JSON.stringify(c));
+
+      //             }
+      //           }
+      //       });
+      //     }
+      //   }
+      //   xhttp.open("GET", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
+      //   xhttp.send();
+      }
+      
+  }
+
+  
+
 
 
 //------------------------------------------------------------------  DETAILS PAGE -  STOP----------------------------------------------------------------------
@@ -309,7 +424,7 @@ function getProductEdit(){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       item = JSON.parse(xhttp.responseText);
-      firebase.database().ref('/contactList').on('value', function(snapshot) {
+      firebase.database().ref('/productsList').on('value', function(snapshot) {
         snapshotToArray(snapshot);
         displayListAdminEdit();
         editProd();
@@ -404,40 +519,133 @@ function editProd(){
 
 
 
-  //---------------------------------      CART PAGE  - START    --------------------------------------------------------------------------------------------------------
+  //---------------------------------      SHOPPING LIST/CART PAGE  - START    --------------------------------------------------------------------------------------------------------
 
+  var idCart = localStorage.getItem("idCart");
+  var subTotal = 0;
+  var total = 0;
 
-  function displayShoppingList(){
-    var listHTML=`<span>Gestionare produse</span>
-    <button onclick="displayListAdminAdd()">+ADAUGA PRODUS NOU</button>
-    <table>
-     <tr>
-       <th>Imagine</th>
-       <th>Nume</th>
-       <th>Pret</th>
-       <th>Cantitate</th>
-       <th></th>
-     </tr>`;
-    for(var i = 0; i< shoppingList.length; i++){
-         listHTML += `
-         
-          <tr>
-          <td><img src="${shoppingList[i].image}" alt=""></td>
-          <td><a onclick="index='${shoppingList[i].key}'; getProductEdit();" type="button">${shoppingList[i].name}</a></td>
-          <td>${shoppingList[i].price}</td>
-          <td>${shoppingList[i].quantity}</td>
-          <td><a onclick="index='${shoppingList[i].key}';deletePrep()" href="#">Remove</a></td>
-          </tr>
-            `;
+  function subTotalIs(a,b){
+    if (a === 0){
+      return;
     }
-      listHTML += "</table>"
+      subTotal = (a*1) * (b*1);
+      total += subTotal;
+      return subTotal;
+  }
+
+  function updatedsubTotal(a, b,c){
+    // if(a == null || a == undefined || a == 0 || a == ""){
+    //   total =  0;
+    // }
+     c.innerText = (a * 1) * (b * 1) ;
+     subTotal = (a * 1) * (b * 1) ;
+     total=0;
+     for(var i = 0; i< shoppingList.length; i++){
+      total +=  parseInt(document.getElementById(`subTotal${i}`).innerText);
+      
+     }
+     
+    document.getElementById("total0").innerText = "Total: " + this.total + " $";
+
+  }
+
+//--------------------- SHOPPING LIST GET/DISPLAY  STAR --------------------------------------------------------------------------
+
+  function resetData() {
+    if(confirm("Are you sure you want to buy these items?")){
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("DELETE", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
+  
+      xhttp.send();
+      xhttp.onreadystatechange = function() {
+          if(xhttp.readyState == 4 && xhttp.status == 200) {
+          }
+      }
+    }
+ }
+
+  function getShoppingList(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+       if (this.readyState == 4 && this.status == 200) {
+        shoppingList = JSON.parse(xhttp.responseText);
+        console.log(JSON.parse(xhttp.responseText));
+        firebase.database().ref('/cartList/'+idCart).on('value', function(snapshot) {
+          document.getElementById("clock").style.display = "none";
+          snapshotToArrayShopping(snapshot);
+          displayShoppingList(shoppingList);
+        });
+      }
+    };
+    xhttp.open("GET", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
+    xhttp.send();
+  }
+
+  function displayShoppingList(shoppingList){
+    if(shoppingList.length === 0){
+      var listHTML=`<h1>Nu aveti niciun produs in cos!</h1>`
       document.getElementById("shoppingCart_wrapper").innerHTML = listHTML;
+    }else{
+      var listHTML=`<h1>Cos de cumparaturi</h1>
+      <table>
+       <tr>
+         <th>Nume</th>
+         <th>Pret</th>
+         <th>Cantitate</th>
+         <th>Sub Total</th>
+         <th></th>
+       </tr>`;
+      for(var i in shoppingList){
+        if(!shoppingList.hasOwnProperty(i)){continue;}
+          // var quantityValue = document.getElementById(`myQuantity${shoppingList[i].key}`).value;
+           listHTML += `
+            <tr>
+            <td>${shoppingList[i].name}</td>
+            <td>${shoppingList[i].price}</td>
+            <td><input  tabindex="1" min="0" oninput="updatedsubTotal(this.value, ${shoppingList[i].price},this.parentElement.nextElementSibling)" type="number" id="myQuantity${shoppingList[i].key}" value="${shoppingList[i].quantity}"></td>
+            <td id="subTotal${i}">${subTotalIs(shoppingList[i].price,shoppingList[i].quantity)}</td>
+            <td><a onclick="index='${shoppingList[i].key}';deleteProdSL()" href="#">Remove</a></td>
+            </tr>
+              `;
+             
+      }
+        listHTML += "</table>"
+         listHTML += `
+        <div id="Total">
+          <span>Produse: ${shoppingList.length}</span><br>
+          <span>TVA: 0 %</span><br>
+          <span>Transport: 0 $</span><br>
+          <h3 id="total0">Total: ${total} $</h3>
+          <button onclick="resetData()">>CUMPARA</button>
+        </div>`;
+        document.getElementById("shoppingCart_wrapper").innerHTML = listHTML;
+    }
+    
   }
 
 
+  function deleteProdSL(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/" + index + "/.json", true);
+    xhttp.send();
+    xhttp.onreadystatechange = function() {
+        if(xhttp.readyState == 4 && xhttp.status == 200) {
+        }
+    }
+    
+  }
+
+//--------------------- SHOPPING LIST GET/DISPLAY  STOP --------------------------------------------------------------------------
 
 
 
+//--------------------- SHOPPING LIST GET/DISPLAY  START --------------------------------------------------------------------------
 
 
-  //---------------------------------      CART PAGE  - STOP    --------------------------------------------------------------------------------------------------------
+
+//--------------------- SHOPPING LIST GET/DISPLAY  STOP --------------------------------------------------------------------------
+
+
+
+  //---------------------------------      SHOPPING LIST/CART PAGE  - STOP    --------------------------------------------------------------------------------------------------------
