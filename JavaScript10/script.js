@@ -196,6 +196,7 @@ function addProductToShoppingList(){
           console.log(idCart);
           document.getElementById("aver").style.opacity = "1";
           document.getElementById("addToCart").disabled = 'true';
+          document.getElementById("addedWrapper").style.display = "block";
           
         });
       }
@@ -212,46 +213,48 @@ function addProductToShoppingList(){
                   xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                     
-                      console.log(JSON.parse(xhttp.responseText));
+                      console.log(xhttp.responseText);
                       localStorage.setItem("opacity", 1);
                       document.getElementById("addToCart").disabled = 'true';
                       document.getElementById("aver").style.opacity = "1";
+                      document.getElementById("addedWrapper").style.display = "block";
+                      setTimeout(function(){  document.getElementById("addedWrapper").style.display = "none";}, 3000);
                     }
                   }
                   xhttp.open("POST", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + ".json", true);
                   xhttp.send(JSON.stringify(c));
 
-      //   var xhttp = new XMLHttpRequest();
-      //   xhttp.onreadystatechange = function() {
-      //     if (this.readyState == 4 && this.status == 200) {
-      //       shoppingList = JSON.parse(xhttp.responseText);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            shoppingList = JSON.parse(xhttp.responseText);
            
 
-      //       firebase.database().ref('/cartList/'+idCart).on('value', function(snapshot) {
-      //         snapshotToArrayShopping(snapshot);
+            firebase.database().ref('/cartList/'+idCart).on('value', function(snapshot) {
+              snapshotToArrayShopping(snapshot);
               
-      //           for(let i = 0; i< shoppingList.length; i++){
-      //             console.log(JSON.parse(xhttp.responseText)[i].id);
-      //             if(shoppingList[i].id === index){
-      //               console.log(JSON.parse(xhttp.responseText)[0].id);
-      //               console.log("wtf",JSON.parse(xhttp.responseText)[i].id);
-      //               var axhttp = new XMLHttpRequest();
-      //               axhttp.onreadystatechange = function() {
-      //                 if (this.readyState == 4 && this.status == 200) {
+                for(let i = 0; i< shoppingList.length; i++){
+                  console.log(JSON.parse(xhttp.responseText)[i]);
+                  if(shoppingList[i].id === index){
+                    console.log(JSON.parse(xhttp.responseText)[0].id);
+                    console.log("wtf",JSON.parse(xhttp.responseText)[i].id);
+                    var axhttp = new XMLHttpRequest();
+                    axhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
                       
-      //                   console.log(JSON.parse(axhttp.responseText));
-      //                 }
-      //               }
-      //               axhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/"+ i +"/.json", true);
-      //               axhttp.send(JSON.stringify(c));
+                        console.log(JSON.parse(axhttp.responseText));
+                      }
+                    }
+                    axhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/"+ i +"/.json", true);
+                    axhttp.send(JSON.stringify(c));
 
-      //             }
-      //           }
-      //       });
-      //     }
-      //   }
-      //   xhttp.open("GET", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
-      //   xhttp.send();
+                  }
+                }
+            });
+          }
+        }
+        xhttp.open("GET", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
+        xhttp.send();
       }
       
   }

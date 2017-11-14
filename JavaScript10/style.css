@@ -1,3 +1,22 @@
+#addedProductText{
+    margin: auto;
+    position: absolute;
+    right: 45%;
+    padding: 15px 0px;
+    color: white;
+    font-weight: 400;
+   
+}
+
+#addedWrapper{
+    background-color: red;
+    height: 48px;
+    width: 87%;
+    position: absolute;
+    top: 15px;
+    display: none;
+}
+
 #aver{
     color: red;
     opacity: 0;
