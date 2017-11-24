@@ -141,7 +141,7 @@ function getProdus(){
       firebase.database().ref('/productsList').on('value', function(snapshot) {
         snapshotToArray(snapshot);
         displayProdus();
-        console.log(xhttp.responseText);
+        console.log("PRODUCTLIST", xhttp.responseText);
     });
     }
   };
@@ -191,8 +191,9 @@ function addProductToShoppingList(){
       if(xhttp.readyState == 4 && xhttp.status == 200) {
         firebase.database().ref('/cartList').on('value', function(snapshot) {
           snapshotToArrayCart(snapshot);
-          console.log(xhttp.responseText)
-          localStorage.setItem("idCart", JSON.parse(xhttp.responseText).name);
+          console.log(xhttp.responseText);
+          idCart = JSON.parse(xhttp.responseText).name;
+          localStorage.setItem("idCart", idCart);
           console.log(idCart);
           document.getElementById("aver").style.opacity = "1";
           document.getElementById("addToCart").disabled = 'true';
@@ -200,7 +201,7 @@ function addProductToShoppingList(){
           
         });
       }
-  }
+    }
 
     xhttp.open("POST", "https://talcioc-cristian-v1.firebaseio.com/cartList/.json", true);
     xhttp.send(JSON.stringify([c]));
@@ -208,8 +209,37 @@ function addProductToShoppingList(){
     
   }
   else{
+ 
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log("RAsPUNS get lista de id cart",this.responseText);
+            shoppingList = JSON.parse(this.responseText);
+                var found = false;   
+                for(let i in shoppingList ){
+                  console.log(JSON.parse(this.responseText)[i]);
+                  if(shoppingList[i].id === index){
+                    found=true;
+                    console.log(JSON.parse(this.responseText)[i].id);
+                    console.log("wtf",JSON.parse(this.responseText)[i].id);
+                    
+                    
+                    var axhttp = new XMLHttpRequest();
+                    axhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                      
+                        console.log("Am facut PUT",JSON.parse(axhttp.responseText));
+                      }
+                    }
+                    axhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/"+ i +"/.json", true);
+                    axhttp.send(JSON.stringify(c));
 
-     var xhttp = new XMLHttpRequest();
+                  }
+                }
+                
+                
+                if(!found){
+                  var xhttp = new XMLHttpRequest();
                   xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                     
@@ -223,34 +253,8 @@ function addProductToShoppingList(){
                   }
                   xhttp.open("POST", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + ".json", true);
                   xhttp.send(JSON.stringify(c));
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            shoppingList = JSON.parse(xhttp.responseText);
-           
-
-            firebase.database().ref('/cartList/'+idCart).on('value', function(snapshot) {
-              snapshotToArrayShopping(snapshot);
-              
-                for(let i = 0; i< shoppingList.length; i++){
-                  console.log(JSON.parse(xhttp.responseText)[i]);
-                  if(shoppingList[i].id === index){
-                    console.log(JSON.parse(xhttp.responseText)[0].id);
-                    console.log("wtf",JSON.parse(xhttp.responseText)[i].id);
-                    var axhttp = new XMLHttpRequest();
-                    axhttp.onreadystatechange = function() {
-                      if (this.readyState == 4 && this.status == 200) {
-                      
-                        console.log(JSON.parse(axhttp.responseText));
-                      }
-                    }
-                    axhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/"+ i +"/.json", true);
-                    axhttp.send(JSON.stringify(c));
-
-                  }
                 }
-            });
+
           }
         }
         xhttp.open("GET", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
