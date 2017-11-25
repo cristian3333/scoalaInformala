@@ -1,3 +1,46 @@
+@media (max-width: 1024px) {
+    body{
+        margin:10px !important;
+        
+    }
+    #main{
+        width: 100% !important;
+        display: table-row !important;
+    }
+    #mainCart table{
+        width:100% !important;
+        font-size: xx-large;
+    }
+    #mainCart #Total{
+        width:100% !important;
+        display: flex;
+        font-size: xx-large!important;
+        padding: 9px 0;
+        text-align: center;
+    }
+    #mainCart button {
+        font-size: medium;
+    }
+    #shoppingCart_wrapper input{
+        font-size: xx-large;
+        height: 30px;
+        }   
+}
+#mainCart{
+    background-color: white;
+    padding:50px;
+}
+#mainCart button{
+    padding: 10px;
+    height: 37px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    background-color:purple;
+}
+#total0{
+    font-weight: 1000;
+}
 #addedProductText{
     margin: auto;
     position: absolute;
@@ -6,6 +49,15 @@
     color: white;
     font-weight: 400;
    
+}
+
+#putWrapper{
+    background-color: red;
+    height: 48px;
+    width: 87%;
+    position: absolute;
+    top: 15px;
+    display: none;
 }
 
 #addedWrapper{
@@ -26,6 +78,12 @@
     float: left;
     
 } 
+
+#shoppingCart_wrapper input{
+width: 95px;
+text-align: center;
+}
+    
 #Total{
     width: 20%;
     float: right;
@@ -268,6 +326,6 @@ table{
 
 
 #clock{
-    margin: auto 1px 0px 42%;    
+    margin: auto 1px 0px 36%;    
 }
 

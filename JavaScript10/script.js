@@ -87,7 +87,7 @@ function getList(){
      if (this.readyState == 4 && this.status == 200) {
       productsList = JSON.parse(xhttp.responseText);
       firebase.database().ref('/productsList').on('value', function(snapshot) {
-        document.getElementById("clock").style.display = "none";
+        // document.getElementById("clock").style.display = "none";
         snapshotToArray(snapshot);
         displayList();
       });
@@ -229,6 +229,7 @@ function addProductToShoppingList(){
                       if (this.readyState == 4 && this.status == 200) {
                       
                         console.log("Am facut PUT",JSON.parse(axhttp.responseText));
+                        document.getElementById("putWrapper").style.display = "block";
                       }
                     }
                     axhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/"+ i +"/.json", true);
@@ -620,10 +621,10 @@ function editProd(){
         listHTML += "</table>"
          listHTML += `
         <div id="Total">
-          <span>Produse: ${shoppingList.length}</span><br>
-          <span>TVA: 0 %</span><br>
-          <span>Transport: 0 $</span><br>
-          <h3 id="total0">Total: ${total} $</h3>
+          <span>Produse: ${shoppingList.length}</span><br>&nbsp;&nbsp;
+          <span>TVA: 0%</span><br>&nbsp;&nbsp;
+          <span>Transport: 0$</span><br>&nbsp;&nbsp;
+          <span id="total0">Total: ${total}$</span><br>
           <button onclick="resetData()">>CUMPARA</button>
         </div>`;
         document.getElementById("shoppingCart_wrapper").innerHTML = listHTML;
