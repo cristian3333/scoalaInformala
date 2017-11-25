@@ -351,5 +351,5 @@ table{
     right: 0;
     bottom: 0;
     margin: auto;
-    background-color: #ffffff94;  
+    background-color: rgba(255, 255, 255, 0.5803921568627451);  
 }
