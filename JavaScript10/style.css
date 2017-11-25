@@ -14,17 +14,25 @@
     #mainCart #Total{
         width:100% !important;
         display: flex;
-        font-size: xx-large!important;
+        font-size: xx-large !important;
         padding: 9px 0;
         text-align: center;
     }
     #mainCart button {
-        font-size: medium;
+        height: 54px !important;
+        font-size: x-large !important;
+        font-weight: 1000 !important;
     }
     #shoppingCart_wrapper input{
         font-size: xx-large;
         height: 30px;
-        }   
+        } 
+        #redBtn{
+            margin-right: 0px !important;
+        }
+        /* #clock{
+            margin: auto 1px 0px 18%!important;
+        } */
 }
 #mainCart{
     background-color: white;
@@ -89,7 +97,7 @@ text-align: center;
     float: right;
     box-sizing: border-box;
     text-align: right;
-    padding: 30px 0;
+    padding: 30px 10px;
     background-color: lightgoldenrodyellow;
     opacity: 1;
 }
@@ -325,7 +333,23 @@ table{
 
 
 
-#clock{
-    margin: auto 1px 0px 36%;    
+#clockdiv{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 200px;
+    height: 200px;
 }
 
+#clock{
+    position: absolute;
+    top: -25%;;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #ffffff94;  
+}

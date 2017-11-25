@@ -87,7 +87,7 @@ function getList(){
      if (this.readyState == 4 && this.status == 200) {
       productsList = JSON.parse(xhttp.responseText);
       firebase.database().ref('/productsList').on('value', function(snapshot) {
-        // document.getElementById("clock").style.display = "none";
+        document.getElementById("clock").style.display = "none";
         snapshotToArray(snapshot);
         displayList();
       });
@@ -625,7 +625,7 @@ function editProd(){
           <span>TVA: 0%</span><br>&nbsp;&nbsp;
           <span>Transport: 0$</span><br>&nbsp;&nbsp;
           <span id="total0">Total: ${total}$</span><br>
-          <button onclick="resetData()">>CUMPARA</button>
+          <button onclick="resetData()">CUMPARA</button>
         </div>`;
         document.getElementById("shoppingCart_wrapper").innerHTML = listHTML;
     }
