@@ -1,4 +1,4 @@
-/* @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     body{
         margin:10px !important;
         
@@ -7,7 +7,7 @@
         width: 100% !important;
         display: table-row !important;
     }
-    #mainCart table{
+    /* #mainCart table{
         width:100% !important;
         font-size: xx-large;
     }
@@ -29,11 +29,11 @@
         } 
         #redBtn{
             margin-right: 0px !important;
-        }
-        // #product_wrapper img {
-        //   height: 25vh;
-        //} 
-} */
+        } */
+        /* #product_wrapper img {
+            height: 25vh;
+        } */
+}
 #mainCart{
     background-color: white;
     padding:50px;
