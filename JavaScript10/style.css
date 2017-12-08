@@ -30,8 +30,8 @@
         #redBtn{
             margin-right: 0px !important;
         }
-        /* #clock{
-            margin: auto 1px 0px 18%!important;
+        /* #product_wrapper img {
+            height: 25vh;
         } */
 }
 #mainCart{
@@ -102,7 +102,7 @@ text-align: center;
     opacity: 1;
 }
  #product_wrapper img{
-    height: 450px;
+    height: 40vh;
 }
 /*
 #details{

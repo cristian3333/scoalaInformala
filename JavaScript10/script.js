@@ -152,10 +152,10 @@ function getProdus(){
 function displayProdus(){
         var preparatHTML = "<div id='product_wrapper' class= col-md-12>";
           preparatHTML += `
-          <div class=" f_l col-md-6">
+          <div class=" f_l col-xs-12 col-sm-6 col-md-6">
             <img src="${item.image}" alt="">
           </div>
-          <div class=" f_l col-md-6">
+          <div class=" f_l col-xs-12 col-sm-6 col-md-6">
             <h1>${item.name}</h1>
             <h3>${item.description}</h3>
             <h2>${item.price}&nbsp;$</h2>
@@ -230,6 +230,7 @@ function addProductToShoppingList(){
                       
                         console.log("Am facut PUT",JSON.parse(axhttp.responseText));
                         document.getElementById("putWrapper").style.display = "block";
+                        setTimeout(function(){  document.getElementById("putWrapper").style.display = "none";}, 3000);
                       }
                     }
                     axhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/"+ i +"/.json", true);
@@ -563,13 +564,45 @@ function editProd(){
   function resetData() {
     if(confirm("Are you sure you want to buy these items?")){
       var xhttp = new XMLHttpRequest();
-      xhttp.open("DELETE", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
-  
-      xhttp.send();
-      xhttp.onreadystatechange = function() {
+      
+      (function getList(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+           if (this.readyState == 4 && this.status == 200) {
+            productsList = JSON.parse(xhttp.responseText);
+            firebase.database().ref('/productsList').on('value', function(snapshot) {
+              snapshotToArray(snapshot);
+            });
+          }
+        };
+        xhttp.open("GET", MENU_SERVER_URL, true);
+        xhttp.send();
+      })();
+
+      shoppingList.forEach((product, i) =>{
+        var prodImage = product.image;
+        var prodName = product.name;
+        var prodDescription = product.description;
+        var prodPrice = product.price;
+        var prodQuantity = document.getElementById(`myQuantity${product.key}`).value; // 9 de exemplu
+        var prodId = product.id;
+        console.log(`put nr.${i}`,product);
+        var c = new Product(prodImage, prodName, prodDescription, prodPrice, prodQuantity,prodId );
+        console.log(`c`,c);
+        xhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/productsList/" + product.id + "/.json", true);
+        xhttp.send(JSON.stringify(c));
+        xhttp.onreadystatechange = function() {
           if(xhttp.readyState == 4 && xhttp.status == 200) {
+            
           }
       }
+      });
+     
+      // xhttp.open("DELETE", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
+
+  
+      
+      
     }
  }
 
