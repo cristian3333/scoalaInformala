@@ -24,28 +24,29 @@ firebase.initializeApp(config);
 function snapshotToArray(snapshot) {
   var returnArr = [];
 
-  snapshot.forEach(function(childSnapshot) {
-      var item = childSnapshot.val();
-      item.key = childSnapshot.key;
-
-      returnArr.push(item);
-  });
+  for(var i in snapshot){
+    var item = snapshot[i];
+    item.key = i;
+    returnArr.push(item);
+   }
 
   return productsList = returnArr;
 };
 
+
+//---------------------------------------------------  CONVERT AN OBJECT WITH OBJECTS  TO AN ARRAY----------------------------------------
+
 function snapshotToArrayShopping(snapshot) {
   var returnArr = [];
-
-  snapshot.forEach(function(childSnapshot) {
-      var item = childSnapshot.val();
-      item.key = childSnapshot.key;
-
-      returnArr.push(item);
-  });
-
-  return shoppingList = returnArr;
+ for(var i in snapshot){
+  var item = snapshot[i];
+  item.key = i;
+  returnArr.push(item);
+ }
+    return shoppingList =returnArr;
 };
+
+//---------------------------------------------------  CONVERT AN OBJECT WITH OBJECTS  TO AN ARRAY----------------------------------------
 
 function snapshotToArrayCart(snapshot) {
   var returnArr = [];
@@ -86,11 +87,10 @@ function getList(){
   xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
       productsList = JSON.parse(xhttp.responseText);
-      firebase.database().ref('/productsList').on('value', function(snapshot) {
+      productsList= snapshotToArray(productsList);
         document.getElementById("clock").style.display = "none";
-        snapshotToArray(snapshot);
         displayList();
-      });
+
     }
   };
   xhttp.open("GET", MENU_SERVER_URL, true);
@@ -141,6 +141,19 @@ function getProdus(){
       firebase.database().ref('/productsList').on('value', function(snapshot) {
         snapshotToArray(snapshot);
         displayProdus();
+        function checkStock(){
+          if(item.quantity < document.getElementById('quantity').value*1){
+            console.log('nu am atatea pe stoc no');
+            document.getElementById("stockWarn").style.opacity = "1";
+            document.getElementById("addToCart").disabled = true;
+          }else{
+            console.log('am atatea pe stoc');
+            document.getElementById("stockWarn").style.opacity = "0";
+            document.getElementById("addToCart").disabled = false;
+          }
+        }
+         quantityInput = document.getElementById("quantity");
+         quantityInput.addEventListener('input',checkStock);
         console.log("PRODUCTLIST", xhttp.responseText);
     });
     }
@@ -160,7 +173,7 @@ function displayProdus(){
             <h3>${item.description}</h3>
             <h2>${item.price}&nbsp;$</h2>
             <h3>In stoc: ${item.quantity}</h3>
-            Cantitate: <input required type="number" id="quantity" tabindex=2 placeholder="1"><br><br>
+            Cantitate: <input required type="number" id="quantity" tabindex=2 placeholder="1"><span id="stockWarn">&nbsp;&nbsp;&nbsp;Cantitatea introdusa nu este disponibila in stoc</span><br><br>
             <button id="addToCart" onclick="addProductToShoppingList()">ADAUGA IN COS</button><span id="aver">&nbsp;&nbsp;&nbsp;Cantitatea poate fi modificata din cosul de cumparaturi</span>
           </div>
           `;
@@ -168,13 +181,11 @@ function displayProdus(){
         preparatHTML += "</div>";
         document.getElementById("produs_wrapper").innerHTML = preparatHTML;
         document.getElementById("clock").style.display = "none";
-        document.getElementById("quantity").value = 1;
+        document.getElementById("quantity").value = 1;        
       }
 
-     
-
 function addProductToShoppingList(){ 
-  var myOpacity=localStorage.getItem("opacity");
+  // var myOpacity=localStorage.getItem("opacity");
   // alert ("Produsul a fost adaugat");
   var prodImage = item.image;
   var prodName = item.name;
@@ -196,7 +207,6 @@ function addProductToShoppingList(){
           localStorage.setItem("idCart", idCart);
           console.log(idCart);
           document.getElementById("aver").style.opacity = "1";
-          document.getElementById("addToCart").disabled = 'true';
           document.getElementById("addedWrapper").style.display = "block";
           
         });
@@ -209,6 +219,8 @@ function addProductToShoppingList(){
     
   }
   else{
+
+    
  
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -246,8 +258,6 @@ function addProductToShoppingList(){
                     if (this.readyState == 4 && this.status == 200) {
                     
                       console.log(xhttp.responseText);
-                      localStorage.setItem("opacity", 1);
-                      document.getElementById("addToCart").disabled = 'true';
                       document.getElementById("aver").style.opacity = "1";
                       document.getElementById("addedWrapper").style.display = "block";
                       setTimeout(function(){  document.getElementById("addedWrapper").style.display = "none";}, 3000);
@@ -289,12 +299,11 @@ function getListAdmin(){
   xhttp.onreadystatechange = function() {
      if (this.readyState == 4 && this.status == 200) {
       productsList = JSON.parse(xhttp.responseText);
-      firebase.database().ref('/productsList').on('value', function(snapshot) {
+      productsList= snapshotToArray(productsList);
         document.getElementById("clock").style.display = "none";
-        snapshotToArray(snapshot);
+
         displayListAdmin();
 
-      });
     }
   };
   xhttp.open("GET", MENU_SERVER_URL, true);
@@ -561,49 +570,53 @@ function editProd(){
 
 //--------------------- SHOPPING LIST GET/DISPLAY  STAR --------------------------------------------------------------------------
 
-  function resetData() {
-    if(confirm("Are you sure you want to buy these items?")){
-      var xhttp = new XMLHttpRequest();
-      
-      (function getList(){
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-           if (this.readyState == 4 && this.status == 200) {
-            productsList = JSON.parse(xhttp.responseText);
-            firebase.database().ref('/productsList').on('value', function(snapshot) {
-              snapshotToArray(snapshot);
-            });
-          }
-        };
-        xhttp.open("GET", MENU_SERVER_URL, true);
-        xhttp.send();
-      })();
-
-      shoppingList.forEach((product, i) =>{
-        var prodImage = product.image;
-        var prodName = product.name;
-        var prodDescription = product.description;
-        var prodPrice = product.price;
-        var prodQuantity = document.getElementById(`myQuantity${product.key}`).value; // 9 de exemplu
-        var prodId = product.id;
-        console.log(`put nr.${i}`,product);
-        var c = new Product(prodImage, prodName, prodDescription, prodPrice, prodQuantity,prodId );
-        console.log(`c`,c);
-        xhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/productsList/" + product.id + "/.json", true);
-        xhttp.send(JSON.stringify(c));
-        xhttp.onreadystatechange = function() {
-          if(xhttp.readyState == 4 && xhttp.status == 200) {
-            
-          }
+function resetData() {
+  if(confirm("Are you sure you want to buy these items?")){      
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      productsList = JSON.parse(this.responseText);
+      productsList= snapshotToArray(productsList);
+        shoppingList.forEach((product) => {
+          var prodImage = product.image;
+          var prodName = product.name;
+          var prodDescription = product.description;
+          var prodPrice = product.price;
+          var prodQuantity = document.getElementById(`myQuantity${product.key}`).value; 
+          var prodId = product.id;
+          var quantityRemained = 0;
+          productsList.forEach((item) =>{
+            if (product.id === item.key){
+              if(prodQuantity*1 <= item.quantity*1){
+                quantityRemained = item.quantity*1 - prodQuantity*1;
+                console.log(`item in productlist`,quantityRemained);
+                var c = new Product(prodImage, prodName, prodDescription, prodPrice, quantityRemained,prodId );
+                console.log(`c`,c);
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/productsList/" + product.id + "/.json", true);
+                xhttp.onreadystatechange = function() {
+                  if(xhttp.readyState == 4 && xhttp.status == 200) {
+                    
+                  }
+                }
+                xhttp.send(JSON.stringify(c));
+              }else{
+                  alert(`Stocul contine maxim ${item.quantity*1}!`);
+                  return;
+              } 
+            }else{
+              return;
+            }
+          });
+        });
       }
-      });
-     
-      // xhttp.open("DELETE", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
-
-  
-      
-      
-    }
+    };
+    xhttp.open("GET", MENU_SERVER_URL, true);
+    xhttp.send();
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
+    xhttp.send(); 
+  }
  }
 
   function getShoppingList(){
@@ -612,11 +625,11 @@ function editProd(){
        if (this.readyState == 4 && this.status == 200) {
         shoppingList = JSON.parse(xhttp.responseText);
         console.log(JSON.parse(xhttp.responseText));
-        firebase.database().ref('/cartList/'+idCart).on('value', function(snapshot) {
+       
           document.getElementById("clock").style.display = "none";
-          snapshotToArrayShopping(snapshot);
+          shoppingList= snapshotToArrayShopping(shoppingList);
           displayShoppingList(shoppingList);
-        });
+
       }
     };
     xhttp.open("GET", "https://talcioc-cristian-v1.firebaseio.com/cartList/" + idCart + "/.json", true);
@@ -672,6 +685,7 @@ function editProd(){
     xhttp.send();
     xhttp.onreadystatechange = function() {
         if(xhttp.readyState == 4 && xhttp.status == 200) {
+          location.reload();
         }
     }
     
