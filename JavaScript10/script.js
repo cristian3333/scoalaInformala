@@ -596,7 +596,7 @@ function resetData() {
                 xhttp.open("PUT", "https://talcioc-cristian-v1.firebaseio.com/productsList/" + product.id + "/.json", true);
                 xhttp.onreadystatechange = function() {
                   if(xhttp.readyState == 4 && xhttp.status == 200) {
-                    
+                    location.reload();
                   }
                 }
                 xhttp.send(JSON.stringify(c));
