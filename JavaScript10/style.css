@@ -177,7 +177,7 @@ text-align: center;
     text-align: center;
 }
 #products_wrapper span{
-  padding: 10px 20px 10px;
+  /* padding: 10px 20px 10px; */
   text-align: center;
   vertical-align: middle;
   font-size: 22px;
